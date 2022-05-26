@@ -7,15 +7,12 @@ console.table(itemInCart);
 
 
 
-//  Récupérer les données des canapés hors lS 
+//  Récupérer les données des canapés  
 
 const getCanapData = async () => {
 
     const res = await fetch(`http://localhost:3000/api/products`);
     canapData = await res.json();
-
-
-    // Si l'id est le même dans canapData et le localStorage sinon appliquer la fonction pour afficher les éléments :
 
 
     if (itemInCart.length === 0) {
@@ -30,7 +27,6 @@ const getCanapData = async () => {
             const canap = itemInCart[i];
             const realCanap = canapData.find(data => data._id === canap.id);
 
-            // + calcul du prix total directement à chaque boucle.
 
             totalPrice += itemInCart[i].quantity * realCanap.price;
             let totalPriceElement = document.getElementById('totalPrice');
