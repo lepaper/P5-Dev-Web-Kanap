@@ -5,8 +5,6 @@ let canapData = [];
 let itemInCart = JSON.parse(localStorage.getItem("product"));
 console.table(itemInCart);
 
-
-
 //  Récupérer les données des canapés  
 
 const getCanapData = async () => {
@@ -34,9 +32,6 @@ const getCanapData = async () => {
             console.log(totalPrice)
 
             displayBasket(canap, realCanap);
-
-
-
         }
         // Calcul prix
 
