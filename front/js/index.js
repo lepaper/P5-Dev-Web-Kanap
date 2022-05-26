@@ -1,8 +1,6 @@
 const allproducts = document.getElementById('items');
 const productscards = document.querySelector('article');
 
-
-
 let canapData = []
 
 // Récupérer les donnée des canapés
@@ -16,8 +14,6 @@ const getallproducts = async () => {
     catch {
         alert('erreur avec fetch')
     }
-
-
 }
 getallproducts();
 
@@ -29,7 +25,6 @@ const allproductsdisplay = async () => {
 
     allproducts.innerHTML = canapData.map((canap) =>
 
-    `
     <a href="product.html?id=${canap._id}">
         <article>
             <img src="${canap.imageUrl}" alt="${canap.altTxt}">
@@ -38,11 +33,8 @@ const allproductsdisplay = async () => {
              <p>${canap.price} <span id="price">
               
             </span>€</p>
-         </article>
-            
-            
+         </article>       
     </a>
-    `
 
 )
     .join("");
