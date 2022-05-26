@@ -18,3 +18,7 @@ const getproductbyID = async () => {
 
         console.log(canapData);
     }
+    catch {
+        alert('Problème avec fetch')
+    }
+}   
