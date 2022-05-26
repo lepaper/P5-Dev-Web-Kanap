@@ -14,7 +14,7 @@ const getproductbyID = async () => {
     try {
 
         const res = await fetch(`http://localhost:3000/api/products/${canapId}`)
-        canapData = await res.json
+        canapData = await res.json()
 
         console.log(canapData);
     }
