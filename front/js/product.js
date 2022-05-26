@@ -4,7 +4,7 @@ const productcontenair = document.querySelector('article');
 // Lien entre page accueil et produit
 
 let params = new URL(document.location).searchParams;
-let canapId = params.get'id';
+let canapId = params.get('id');
 
 
 let canapData = [];
