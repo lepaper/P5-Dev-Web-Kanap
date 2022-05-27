@@ -103,7 +103,7 @@ const displayBasket = (id, realId) => {
     inputQuantity.setAttribute("type", "number");
     inputQuantity.setAttribute("name", "itemQuantity");
     inputQuantity.setAttribute("min", 1);
-    inputQuantity.setAttribute("max", 10);
+    inputQuantity.setAttribute("max", 100);
     inputQuantity.setAttribute("value", id.quantity);
     inputQuantity.classname = 'itemQuantity';
     settingsQuantity.appendChild(inputQuantity);
