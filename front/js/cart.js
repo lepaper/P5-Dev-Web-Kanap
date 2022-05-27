@@ -33,7 +33,6 @@ const getCanapData = async () => {
 
             displayBasket(canap, realCanap);
         }
-        // Calcul prix
 
     }
 }
@@ -90,16 +89,12 @@ const displayBasket = (id, realId) => {
     divItemDescription.appendChild(productPrice);
 
 
-    // Settings bloc 
-
     let settingsBloc = document.createElement('div');
     settingsBloc.className = 'cart__item__content__settings';
     divItemContent.appendChild(settingsBloc);
     let settingsQuantity = document.createElement('div');
     settingsQuantity.className = 'cart__item__content__settings__quantity';
     settingsBloc.appendChild(settingsQuantity);
-
-    // Settings bloc : manage quantity (add)
 
     let quantityTxt = document.createElement('p');
     quantityTxt.textContent = 'Qte : ';
