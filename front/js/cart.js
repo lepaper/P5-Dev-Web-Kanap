@@ -121,3 +121,4 @@ const displayBasket = (id, realId) => {
 
 
     })
+}
