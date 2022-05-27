@@ -118,7 +118,32 @@ const displayBasket = (id, realId) => {
 
             console.log(itemInCart);
         }
-
-
     })
+    let removeQuantity = document.createElement('div');
+    removeQuantity.className = 'cart__item__content__settings__delete';
+    settingsBloc.appendChild(removeQuantity);
+    let removeQuantityButton = document.createElement('p');
+    removeQuantityButton.className = 'deleteItem';
+    removeQuantityButton.textContent = 'Supprimer';
+    removeQuantityButton.setAttribute("id", `${id.id && id.color}`)
+    removeQuantity.appendChild(removeQuantityButton);
+    removeQuantityButton.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        let idToRemove = id.id;
+        let colorToRemove = id.color;
+        console.log(idToRemove);
+        console.log(colorToRemove)
+
+        itemInCart = itemInCart.filter(element => element.id !== idToRemove || element.color !== colorToRemove);
+        localStorage.setItem("product", JSON.stringify(itemInCart));
+        e.target.closest('.cart__item').remove();
+        alert(`${id.quantity} ${id.name} ${id.color} à été retiré du panier !`);
+        location.reload();
+        console.log(itemInCart)
+    })
+
+
+
+    getTotals()
 }
