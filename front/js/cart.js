@@ -50,9 +50,6 @@ const displayBasket = (id, realId) => {
     cartArticle.setAttribute('data-id', id.id);
     cartArticle.setAttribute('data-color', id.color);
 
-
-    // IMG
-
     let divCartImg = document.createElement("div");
     cartArticle.appendChild(divCartImg);
     divCartImg.className = "cart__item__content";
@@ -61,8 +58,6 @@ const displayBasket = (id, realId) => {
     cartImg.src = realId.imageUrl;
     cartImg.alt = realId.altTxt;
 
-    // Description Bloc 
-
     let divItemContent = document.createElement("div");
     divItemContent.className = 'cart__item__content';
     cartArticle.appendChild(divItemContent);
@@ -70,19 +65,13 @@ const displayBasket = (id, realId) => {
     divItemContent.appendChild(divItemDescription);
     divItemDescription.className = 'cart__item__content__description';
 
-    // Description content : Title
-
     let productName = document.createElement("h2");
     productName.textContent = id.name;
     divItemDescription.appendChild(productName);
 
-    // Description content : color
-
     let productColor = document.createElement('p');
     productColor.textContent = id.color;
     divItemDescription.appendChild(productColor);
-
-    // Description content : price 
 
     let productPrice = document.createElement('p');
     productPrice.textContent = realId.price + ' ' + '€';
@@ -142,9 +131,6 @@ const displayBasket = (id, realId) => {
         location.reload();
         console.log(itemInCart)
     })
-
-
-
     getTotals()
 }
 
@@ -163,3 +149,93 @@ async function getTotals() {
     totalQuantity.textContent = totalQte
     console.log(totalQte);
 }
+
+let emailReg = new RegExp('^[a-zA-Z0-9._-]+[@]{1}[a-zA-Z0-9._-]+[.]{1}[a-z]{2,10}$');
+let textRegExp = new RegExp("^[a-zA-Z-àâäéèêëïîôöùûüç ,.'-]+$");
+let addressRegExp = new RegExp("^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+");
+
+// Validation du formulaire  
+
+function getForm() {
+
+    const form = document.querySelector('.cart__order__form');
+
+
+    form.firstName.addEventListener('change', function () {
+        validFirstName(this);
+    })
+
+    const validFirstName = function (inputFirstName) {
+        let firstNameErrorMsg = inputFirstName.nextElementSibling;
+
+
+        if (textRegExp.test(inputFirstName.value)) {
+            firstNameErrorMsg.innerHTML = '';
+        }
+        else {
+            firstNameErrorMsg.innerHTML = 'Merci de renseigner votre prénom';
+        }
+
+    };
+
+    form.lastName.addEventListener('change', function () {
+        validLastName(this)
+    })
+
+    const validLastName = function (inputLastName) {
+        let lastNameErrorMsg = inputLastName.nextElementSibling;
+
+        if (textRegExp.test(inputLastName.value)) {
+            lastNameErrorMsg.innerHTML = '';
+        }
+        else {
+            lastNameErrorMsg.innerHTML = 'Merci de renseigner votre nom';
+        }
+    }
+
+    form.address.addEventListener('change', function () {
+        validAddress(this);
+
+    })
+
+    const validAddress = function (inputAddress) {
+        let addressErrorMsg = inputAddress.nextElementSibling;
+
+        if (addressRegExp.test(inputAddress.value)) {
+            addressErrorMsg.innerHTML = '';
+        }
+        else {
+            addressErrorMsg.innerHTML = 'Merci de renseigner votre adresse'
+        }
+    }
+
+    form.city.addEventListener('change', function () {
+        validCity(this);
+    })
+
+    const validCity = function (inputCity) {
+        let cityErrorMsg = inputCity.nextElementSibling;
+
+        if (textRegExp.test(inputCity.value)) {
+            cityErrorMsg.innerHTML = '';
+        }
+        else {
+            cityErrorMsg.innerHTML = 'Merci de renseigner une ville'
+        }
+    }
+
+    form.email.addEventListener('change', function () {
+        validEmail(this);
+    })
+
+    const validEmail = function (inputEmail) {
+        let emailErrorMsg = inputEmail.nextElementSibling;
+
+        if (emailReg.test(inputEmail.value)) {
+            emailErrorMsg.innerHTML = '';
+        }
+        else {
+            emailErrorMsg.innerHTML = 'Merci de renseigner votre email'
+        }
+    }
+} getForm();
