@@ -239,3 +239,88 @@ function getForm() {
         }
     }
 } getForm();
+
+function postForm() {
+    const btnCommand = document.getElementById('order');
+
+    //  Récupération des inputs
+
+    let inputFirstName = document.getElementById('firstName');
+    let inputLastName = document.getElementById('lastName');
+    let inputAddress = document.getElementById('address');
+    let inputCity = document.getElementById('city');
+    let inputEmail = document.getElementById('email');
+
+    // Creation de l'événement au click 
+
+    btnCommand.addEventListener('click', function (e) {
+        // e.preventDefault();
+        if (
+            !inputFirstName.value ||
+            !inputLastName.value ||
+            !inputCity.value ||
+            !inputAddress.value ||
+            !inputEmail.value
+        ) {
+            alert("Vous devez renseigner tous les champs !");
+            e.preventDefault();
+        }
+
+        else if (
+            !textRegExp.test(firstName.value) ||
+            !textRegExp.test(lastName.value) ||
+            !textRegExp.test(city.value) ||
+            !addressRegExp.test(address.value) ||
+            !emailReg.test(email.value)
+        ) {
+            alert('Merci de renseigner correctement tous les champs')
+        }
+
+        else {
+
+
+            // Créer un tableau pour passer les informations
+
+            let productsId = [];
+            for (let p = 0; p < itemInCart.lenght; p++) {
+                productsId.push(itemInCart[i].id)
+            }
+            console.log(productsId);
+
+            const order = {
+                contact: {
+                    firstName: inputFirstName.value,
+                    lastName: inputLastName.value,
+                    address: inputAddress.value,
+                    city: inputCity.value,
+                    email: inputEmail.value,
+                },
+
+                products: productsId
+            }
+
+            let options = {
+                method: 'POST',
+                body: JSON.stringify(order),
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            };
+
+            fetch('http://localhost:3000/api/products/order', options)
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    localStorage.clear();
+                    // localStorage.setItem('orderId', data.orderId);
+
+                    document.location.href = 'confirmation.html?orderId=' + data.orderId
+                })
+                .catch((err) => {
+                    alert('Issue with fetch' + err.message);
+                });
+        }
+
+    })
+}
+postForm();
