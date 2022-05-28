@@ -147,3 +147,19 @@ const displayBasket = (id, realId) => {
 
     getTotals()
 }
+
+async function getTotals() {
+    // Qte
+
+    let productQte = itemInCart;
+    let totalQte = 0
+
+    for (let product of productQte) {
+        totalQte += Number(product.quantity);
+
+    }
+
+    let totalQuantity = document.getElementById('totalQuantity');
+    totalQuantity.textContent = totalQte
+    console.log(totalQte);
+}
