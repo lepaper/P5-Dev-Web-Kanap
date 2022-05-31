@@ -27,7 +27,7 @@ const allproductsdisplay = async () => {
 
     <a href="product.html?id=${canap._id}">
         <article>
-            <img src="${canap.imageUrl}" alt="${canap.altTxt}">
+            <img src="${canap.imageUrl}" alt="${canap.altTxt}"/>
              <h3 class="productName">${canap.name}</h3>
              <p class="productDescription">${canap.description}</p>
              <p>${canap.price} <span id="price">
