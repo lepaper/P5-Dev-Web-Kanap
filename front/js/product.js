@@ -22,25 +22,21 @@ fetch(`http://localhost:3000/api/products/${id}`)
 
 //Création article des produits
 function getArticle(article) {
-  //Création des images
+
   let elementImg = document.createElement('img');
   document.querySelector('.item__img').appendChild(elementImg);
   elementImg.src = article.imageUrl;
   elementImg.Alt = article.altTxt;
 
-  //Insertion des noms dans l'id title
   let elementTitle = document.getElementById('title');
   elementTitle.textContent = article.name;
 
-  //Insertion des prix dans l'id price
   let elementPrice = document.getElementById('price');
   elementPrice.textContent = article.price;
 
-  //Insertion de la description des produits dans l'id description
   let elementDescription = document.getElementById('description');
   elementDescription.textContent = article.description;
 
-  //Insertion des différents choix de couleurs
   for (let colors of article.colors) {
     let elementsColor = document.createElement('option');
     document.querySelector('#colors').appendChild(elementsColor);
@@ -55,7 +51,7 @@ function onClick(article) {
   //button d'ajout des produits et écouteurs d'événement au click
   const button = document.querySelector('#addToCart');
   button.addEventListener('click', (e) => {
-    //Récupération des valeurs quantité et couleurs
+
     let selectColor = colorSelect.value;
     let selectQuantity = quantitySelect.value;
 
@@ -71,7 +67,6 @@ function onClick(article) {
       );
       return;
     } else {
-      //Condition pour ajouter dans le panier couleur et quantité définit
 
       //Récupération des informations de l'article à ajouter au panier
       let info = {
@@ -99,7 +94,7 @@ function onClick(article) {
           //envoie l'utilisateur sur la page panier
           window.location.href = 'cart.html';
         } else {
-          location.reload(); //reload de la page actuelle
+          location.reload(); 
         }
       };
 
@@ -124,7 +119,7 @@ function onClick(article) {
       } else {
         //s'il n'y a rien dans le panier création array
         purchaseStorage = [];
-        //On push les informations du localStorage dans le array
+s
         purchaseStorage.push(info);
         localStorage.setItem('produit', JSON.stringify(purchaseStorage));
         alertConfirmation();

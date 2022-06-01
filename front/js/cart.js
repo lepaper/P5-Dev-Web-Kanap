@@ -49,60 +49,49 @@ function getItem() {
       article.dataset.id = purchaseStorage[p].idProduit;
       article.dataset.color = purchaseStorage[p].color;
 
-      //creation de la div img
       let divImage = document.createElement('div');
       article.appendChild(divImage);
       divImage.classList.add('cart__item__img');
 
-      //Insertion de l'image dans la div img
       let imageInDiv = document.createElement('img');
       divImage.appendChild(imageInDiv);
       imageInDiv.src = purchaseStorage[p].imageUrl;
       imageInDiv.alt = purchaseStorage[p].imgAlt;
 
-      //creation de la div cart__item__content
       let divContent = document.createElement('div');
       article.appendChild(divContent);
       divContent.classList.add('cart__item__content');
 
-      //creation de la div cart__item__content__description dans cart__item__content
       let divContentDescription = document.createElement('div');
       divContent.appendChild(divContentDescription);
       divContentDescription.classList.add('cart__item__content__description');
 
-      //creation du h2 dans cart__item__content__description
       let divContentDescriptionH2 = document.createElement('h2');
       divContentDescription.appendChild(divContentDescriptionH2);
       divContentDescriptionH2.textContent = purchaseStorage[p].nom;
 
-      //creation du <p></p> pour la color
       let divContentDescriptionP = document.createElement('p');
       divContentDescription.appendChild(divContentDescriptionP);
       divContentDescriptionP.textContent = purchaseStorage[p].color;
 
-      //creation du <p></p> pour le prix
       let divContentDescriptionPrice = document.createElement('p');
       divContentDescription.appendChild(divContentDescriptionPrice);
       divContentDescriptionPrice.textContent = purchaseStorage[p].price + ' €';
 
-      //creation de la div cart__item__content__settings dans la div cart__item__content
       let divContentSettings = document.createElement('div');
       divContent.appendChild(divContentSettings);
       divContentSettings.classList.add('cart__item__content__settings');
 
-      //creation de la div class="cart__item__content__settings__quantity
       let divContentSettingsQuantity = document.createElement('div');
       divContentSettings.appendChild(divContentSettingsQuantity);
       divContentSettingsQuantity.classList.add(
         'cart__item__content__settings__quantity'
       );
 
-      //creation du p dans la div cart__item__content__settings__quantity
       let divContentSettingsQuantityP = document.createElement('p');
       divContentSettingsQuantity.appendChild(divContentSettingsQuantityP);
       divContentSettingsQuantityP.textContent = 'Qté :';
 
-      //création de <input>
       let inputQuantity = document.createElement('input');
       divContentSettingsQuantity.appendChild(inputQuantity);
       inputQuantity.setAttribute('type', 'number');
@@ -112,7 +101,6 @@ function getItem() {
       inputQuantity.setAttribute('max', '100');
       inputQuantity.value = purchaseStorage[p].quantity; // A REVOIR
 
-      //création de la div cart__item__content__settings__delete
       let itemDelete = document.createElement('div');
       divContentSettings.appendChild(itemDelete);
       itemDelete.classList.add('cart__item__content__settings__delete');
@@ -147,7 +135,6 @@ function totalItems() {
   productTotalPrice.textContent = totalPrice;
 }
 
-//fonction de modification de la quantité des produits avec addEventListener change
 function modifyQuantity() {
   const modifQuantity = document.querySelectorAll('.itemQuantity');
 
@@ -171,7 +158,6 @@ function modifyQuantity() {
   }
 }
 
-//fonction pour delete un Item
 function deleteItem() {
   const delItem = document.querySelectorAll('.deleteItem');
   for (let d = 0; d < delItem.length; d++) {
@@ -197,8 +183,6 @@ function deleteItem() {
   }
 }
 
-/*************************************FORMULAIRE**********************************************/
-//function pour different element du formulaire
 function getForm() {
   //évenement sur le champs prénom et validation du format
   let firstName = document.getElementById('firstName');
@@ -256,7 +240,6 @@ function getForm() {
   });
 }
 
-//Function btn order commander pour confirmation de la commande
 function orderForm() {
   const orderButton = document.getElementById('order');
 
@@ -269,7 +252,7 @@ function orderForm() {
       );
       
     }
-    //si le formulaire non remplis correctement après test ReGex  ---> message
+
     else if (
       !nameRegex.test(firstName.value) ||
       !nameRegex.test(lastName.value) ||
@@ -279,14 +262,12 @@ function orderForm() {
     ) {
       alert('Veuillez remplir correctement tous les champs du formulaire');
     } else {
-      /* si produit dans local storage et formulaire correct*/
       //création d'un tableau pour recuperer les ID produits
       let productId = [];
       for (let i = 0; i < purchaseStorage.length; i++) {
         productId.push(purchaseStorage[i].idProduit);
       }
 
-      //creation  de l'objet contact avec les infos remplis dans le formulaire et insertion du tableau productId
       let buyOrder = {
         contact: {
           firstName: firstName.value,
@@ -314,7 +295,6 @@ function orderForm() {
         })
         .then((data) => {
           const orderId = data.orderId;
-          //envoie vers la page de de confirmation
           window.location.href = 'confirmation.html' + '?orderId=' + orderId;
         })
         .catch((error) => {
