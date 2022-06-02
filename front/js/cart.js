@@ -184,7 +184,7 @@ function deleteItem() {
 }
 
 function getForm() {
-  //évenement sur le champs prénom et validation du format
+
   let firstName = document.getElementById('firstName');
   firstName.addEventListener('input', function () {
     if (nameRegex.test(firstName.value) === false) {
@@ -195,7 +195,6 @@ function getForm() {
     }
   });
 
-  //évenement sur le champs nom et validation du format
   let lastName = document.getElementById('lastName');
   lastName.addEventListener('input', function () {
     if (nameRegex.test(lastName.value) === false) {
@@ -206,7 +205,6 @@ function getForm() {
     }
   });
 
-  //évenement sur le champs adresse et validation du format
   let address = document.getElementById('address');
   address.addEventListener('input', function () {
     if (adressRegex.test(address.value) === false) {
@@ -217,7 +215,6 @@ function getForm() {
     }
   });
 
-  //évenement sur le champs ville et validation du format
   let city = document.getElementById('city');
   city.addEventListener('input', function () {
     if (nameRegex.test(city.value) === false) {
@@ -228,7 +225,6 @@ function getForm() {
     }
   });
 
-  //évenement sur le champs email et validation du format
   let email = document.getElementById('email');
   email.addEventListener('input', function () {
     if (emailRegex.test(email.value) === false) {
