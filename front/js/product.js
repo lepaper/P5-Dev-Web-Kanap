@@ -119,7 +119,7 @@ function onClick(article) {
       } else {
         //s'il n'y a rien dans le panier création array
         purchaseStorage = [];
-s
+
         purchaseStorage.push(info);
         localStorage.setItem('produit', JSON.stringify(purchaseStorage));
         alertConfirmation();
