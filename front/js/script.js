@@ -6,15 +6,14 @@ const allproducts = document.getElementById('items');
 // Récupérer les donnée des canapés
 
 const getallproducts = async () => {
-    try {
+
         const res = await fetch('http://localhost:3000/api/products')
+        if(!res.ok){
+            throw Error(res.statusText)
+        }
         canapData = await res.json();
        
         return canapData;
-    }
-    catch {
-        alert('erreur avec fetch')
-    }
 }
 
 function getHtml(prod){
@@ -37,5 +36,5 @@ getallproducts()
         allproducts.innerHTML= productsHtml;
        
     })
-    .catch()
+    .catch(err => console.log(err));
 

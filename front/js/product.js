@@ -4,24 +4,22 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get('id');
 //?
-let article = '';
+//let article = '';
 
 const colorSelect = document.querySelector('#colors');
 const quantitySelect = document.querySelector('#quantity');
 
 //On récupère les produits de l'API
+function getArticle(){
 
-fetch(`http://localhost:3000/api/products/${id}`)
+return fetch(`http://localhost:3000/api/products/${id}`)
   .then((response) => {
     return response.json();
   })
-  .then((res) => {
-    return getArticle(res);
-  })
   .catch((error) => console.error(error));
-
+}
 //Création article des produits
-function getArticle(article) {
+function insertData(article) {
 
   let elementImg = document.createElement('img');
   document.querySelector('.item__img').appendChild(elementImg);
@@ -127,3 +125,6 @@ function onClick(article) {
     }
   });
 }
+getArticle().then(product => {
+insertData(product);
+})
