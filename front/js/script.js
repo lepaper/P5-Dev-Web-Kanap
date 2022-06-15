@@ -16,6 +16,8 @@ const getallproducts = async () => {
         return canapData;
 }
 
+// Afficher les canapés sur la page d'acceuil et lien produit
+
 function getHtml(prod){
     return `<a href="product.html?id=${prod._id}">
         <article>

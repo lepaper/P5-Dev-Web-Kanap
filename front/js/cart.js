@@ -183,6 +183,8 @@ function deleteItem() {
   }
 }
 
+//Validation du formulaire
+
 function getForm() {
 
   let firstName = document.getElementById('firstName');
