@@ -9,7 +9,7 @@ const getallproducts = async () => {
 
         const res = await fetch('http://localhost:3000/api/products')
         if(!res.ok){
-            throw Error(res.statusText)
+            throw Error(`HTPP : ${res.status} ${res.statusText}`)
         }
         canapData = await res.json();
        
